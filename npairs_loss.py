@@ -70,4 +70,4 @@ class NPairsLoss(nn.Module):
             neg = neg.repeat(n_pos, 1)
             loss_dasc += torch.sum(torch.log(1 + torch.sum(torch.exp(neg - pos), dim = 1)))
 
-        return (loss_sadc + loss_sadc + loss_dasc) / n
+        return (loss_sasc + loss_sadc + loss_dasc) / n
