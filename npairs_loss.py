@@ -59,7 +59,7 @@ class NPairsLoss(nn.Module):
             n_neg = neg.size(0)
             pos = pos.repeat(n_neg, 1).t()
             neg = neg.repeat(n_pos, 1)
-            loss_sasc += torch.sum(torch.log(1 + torch.sum(torch.exp(neg - pos), dim = 1)))
+            loss_sadc += torch.sum(torch.log(1 + torch.sum(torch.exp(neg - pos), dim = 1)))
 
             #loss_dasc
             pos = prod[i][s_dasc[i]]
@@ -68,6 +68,6 @@ class NPairsLoss(nn.Module):
             n_neg = neg.size(0)
             pos = pos.repeat(n_neg, 1).t()
             neg = neg.repeat(n_pos, 1)
-            loss_sasc += torch.sum(torch.log(1 + torch.sum(torch.exp(neg - pos), dim = 1)))
+            loss_dasc += torch.sum(torch.log(1 + torch.sum(torch.exp(neg - pos), dim = 1)))
 
         return (loss_sadc + loss_sadc + loss_dasc) / n
